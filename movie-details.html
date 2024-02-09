@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Details</title>
+  </head>
+  <body>
+    <div id="movie-details"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // Get the movie ID from the query parameter
+        var urlParams = new URLSearchParams(window.location.search);
+        var movieId = urlParams.get("id");
+
+        // Fetch movie details using the OMDB API
+        $.ajax({
+          url: "http://www.omdbapi.com/",
+          type: "GET",
+          data: {
+            apikey: "147ac9e4",
+            i: movieId,
+          },
+          success: function (response) {
+            if (response.Response === "True") {
+              var movie = response;
+              var html = "<h2>" + movie.Title + "</h2>";
+              html += "<p><strong>Year:</strong> " + movie.Year + "</p>";
+              html += "<p><strong>Rated:</strong> " + movie.Rated + "</p>";
+              html +=
+                "<p><strong>Released:</strong> " + movie.Released + "</p>";
+              html += "<p><strong>Runtime:</strong> " + movie.Runtime + "</p>";
+              html += "<p><strong>Genre:</strong> " + movie.Genre + "</p>";
+              html +=
+                "<p><strong>Director:</strong> " + movie.Director + "</p>";
+              html += "<p><strong>Writer:</strong> " + movie.Writer + "</p>";
+              html += "<p><strong>Actors:</strong> " + movie.Actors + "</p>";
+              html += "<p><strong>Plot:</strong> " + movie.Plot + "</p>";
+              html +=
+                "<p><strong>Language:</strong> " + movie.Language + "</p>";
+              html += "<p><strong>Country:</strong> " + movie.Country + "</p>";
+              html += "<p><strong>Awards:</strong> " + movie.Awards + "</p>";
+              html +=
+                "<p><strong>IMDB Rating:</strong> " + movie.imdbRating + "</p>";
+              html +=
+                "<p><strong>Metascore:</strong> " + movie.Metascore + "</p>";
+              html += "<img src='" + movie.Poster + "' alt='Poster'>";
+              $("#movie-details").html(html);
+            } else {
+              $("#movie-details").html("<p>No movie details found</p>");
+            }
+          },
+          error: function (xhr, status, error) {
+            console.log("Error:", error);
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
