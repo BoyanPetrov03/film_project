@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transformer Movies</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <div id="movies"></div>
+
+    <script>
+      $(document).ready(function () {
+        $.ajax({
+          url: "http://www.omdbapi.com/",
+          type: "GET",
+          data: {
+            apikey: "147ac9e4",
+            s: "Transformer",
+            type: "movie",
+          },
+          success: function (response) {
+            if (response.Response === "True") {
+              var movies = response.Search;
+              var html = "";
+              for (var i = 0; i < movies.length; i++) {
+                html += `<div>`;
+                html += "<h2>" + movies[i].Title + "</h2>";
+                html += "<p><strong>Year:</strong> " + movies[i].Year + "</p>";
+                html += "<p><strong>Type:</strong> " + movies[i].Type + "</p>";
+                html += "<img src='" + movies[i].Poster + "' alt='Poster'>";
+                html += "</div>";
+              }
+              $("#movies").html(html);
+            } else {
+              $("#movies").html("<p>No movies found</p>");
+            }
+          },
+          error: function (xhr, status, error) {
+            console.log("Error:", error);
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
