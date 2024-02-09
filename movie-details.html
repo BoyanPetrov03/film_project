@@ -4,11 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie Details</title>
+    <link rel="stylesheet" href="./details.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
   </head>
   <body>
-    <div id="movie-details"></div>
-
+    <div class="navbar">
+      <div class="icon">
+        <span
+          class="material-symbols-outlined"
+          style="font-size: 36px; cursor: pointer"
+        >
+          account_circle
+        </span>
+        <!-- Account menu -->
+        <div id="account-menu" style="display: none" class="account-menu">
+          <!-- Your account menu content goes here -->
+          <ul class="account-list">
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="poster">
+        <div id="movie-poster"></div>
+      </div>
+      <div class="details">
+        <div id="movie-details" class="movie-details"></div>
+      </div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="index.js"></script>
     <script>
       $(document).ready(function () {
         // Get the movie ID from the query parameter
@@ -26,6 +57,9 @@
           success: function (response) {
             if (response.Response === "True") {
               var movie = response;
+              var poster =
+                "<img src='" + movie.Poster + "' alt='Movie Poster'>";
+              $("#movie-poster").html(poster);
               var html = "<h2>" + movie.Title + "</h2>";
               html += "<p><strong>Year:</strong> " + movie.Year + "</p>";
               html += "<p><strong>Rated:</strong> " + movie.Rated + "</p>";
@@ -46,7 +80,6 @@
                 "<p><strong>IMDB Rating:</strong> " + movie.imdbRating + "</p>";
               html +=
                 "<p><strong>Metascore:</strong> " + movie.Metascore + "</p>";
-              html += "<img src='" + movie.Poster + "' alt='Poster'>";
               $("#movie-details").html(html);
             } else {
               $("#movie-details").html("<p>No movie details found</p>");
