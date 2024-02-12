@@ -12,6 +12,8 @@
 }
 
 .profile {
+    position: absolute;
+    right: 30px;
     width: 100px;
     height: 25px;
     padding: 2px;
@@ -21,6 +23,7 @@
     color: #003049;
     text-align: center;
     font-size: larger;
+    
 }
   
 .account-menu {

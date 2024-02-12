@@ -14,8 +14,6 @@ body{
   color: #011d50;
 }
 
-
-
 #movies {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -24,7 +22,7 @@ body{
 }
   
 .movie {
-  border: 1px solid #ccc;
+  /*border: 1px solid #ccc;*/
   padding: 10px;
   text-align: left;
 }
