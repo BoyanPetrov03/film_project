@@ -7,27 +7,26 @@
     <title>Movies</title>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="navbar.css">
-    
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="navbar.css" />
   </head>
   <body>
-
     <div class="navbar">
-      <div class="profile">
-        Login <!--vruzka kum login-->
-      </div>
+      <a href="login.html" class="profile">
+        Login
+        <!--vruzka kum login-->
+      </a>
     </div>
 
     <div id="movies"></div>
-    
+
     <script>
       $(document).ready(function () {
         $.ajax({
           url: "http://www.omdbapi.com/",
           type: "GET",
           data: {
-            apikey: "3aa8bb45", // Replace YOUR_OMDB_API_KEY with your actual OMDB API key
+            apikey: "3aa8bb45",
             s: "transformers",
             type: "movie",
           },
@@ -38,11 +37,12 @@
               for (var i = 0; i < movies.length; i++) {
                 html += "<div class='movie'>";
                 html +=
-                "<a href='movie-details.html?id=" +
+                  "<a href='movie-details.html?id=" +
                   movies[i].imdbID +
-                  "'>" +"<img src='" +
-                movies[i].Poster +
-                "' alt='Movie Poster'>";
+                  "'>" +
+                  "<img src='" +
+                  movies[i].Poster +
+                  "' alt='Movie Poster'>";
                 html +=
                   "<h2><a href='movie-details.html?id=" +
                   movies[i].imdbID +
@@ -51,7 +51,7 @@
                   "</a></h2>";
                 html += "<p> (" + movies[i].Year + ")</p>";
                 //html += "<p><strong>Type:</strong> " + movies[i].Type + "</p>";
-                
+
                 html += "</div>";
               }
               $("#movies").html(html);
