@@ -14,6 +14,8 @@ body{
   color: #011d50;
 }
 
+
+
 #movies {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
