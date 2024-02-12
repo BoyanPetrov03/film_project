@@ -1,0 +1,59 @@
+/*colors*/
+/*  
+  #003049
+  #D62828
+  #F77F00
+  #FCBF49
+  #EAE2B7
+*/
+
+body{
+  margin: 0;
+  padding: 0;
+  background-color: #fbebb4;
+  color: #011d50;
+}
+
+#movies {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px;
+  margin: 5px 20px 5px 20px;
+}
+  
+.movie {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+  
+.movie img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 1em; 
+}
+
+.movie a{
+  color: #011d50;
+  text-decoration: none;
+}
+
+.movie a:visited{
+  color: #011d50;
+  text-decoration: none;
+}
+
+.movie a:hover{
+  color: #ff3500;
+}
+
+.movie h2{
+  margin-bottom: 0;
+  color: #011d50;
+}
+.movie p{
+  margin: 0;
+  padding-top: 10px;
+}
+  

@@ -1,0 +1,44 @@
+.navbar {
+    width: 100%;
+    background-color: #003049;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 10px 50px;
+    color: #BCE0F0;
+    text-align: right;
+    box-sizing: border-box;
+}
+  
+.account-menu {
+    position: absolute;
+    right: 25px;
+    width: 170px;
+    background-color: #BCE0F0;
+    border-radius: 10px;
+}
+
+.account-list {
+    list-style: none;
+    text-align: left;
+    margin: 0;
+    padding: 10px 20px ;
+}
+
+.account-list li {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: larger;
+}
+  
+.account-list a {
+    color: #561010;
+    text-decoration: none;
+    
+}
+
+.account-list a:hover{
+    color: #561010;
+    font-weight: bolder;
+}
+

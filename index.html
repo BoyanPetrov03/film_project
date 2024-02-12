@@ -3,20 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Transformer Movies</title>
+
+    <title>Movies</title>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="style_main.css">
+    <link rel="stylesheet" href="navbar.css">
   </head>
   <body>
-    <div id="movies"></div>
 
+    <div class="navbar">
+      <div class="icon">
+        <span
+          class="material-symbols-outlined"
+          style="font-size: 36px; cursor: pointer">
+          account_circle
+        </span>
+        <!-- Account menu -->
+        <div id="account-menu" style="display: none" class="account-menu">
+          <!-- Your account menu content goes here -->
+          <ul class="account-list">
+            <li><a href="#">Favourites</a></li>
+            <li><a href="#">Watch list</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="movies"></div>
+    
     <script>
       $(document).ready(function () {
         $.ajax({
           url: "http://www.omdbapi.com/",
           type: "GET",
           data: {
-            apikey: "147ac9e4", // Replace YOUR_OMDB_API_KEY with your actual OMDB API key
-            s: "Transformers",
+            apikey: "3aa8bb45", // Replace YOUR_OMDB_API_KEY with your actual OMDB API key
+            s: "transformers",
             type: "movie",
           },
           success: function (response) {
@@ -24,19 +49,22 @@
               var movies = response.Search;
               var html = "";
               for (var i = 0; i < movies.length; i++) {
-                html += "<div>";
+                html += "<div class='movie'>";
+                html +=
+                "<a href='movie-details.html?id=" +
+                  movies[i].imdbID +
+                  "'>" +"<img src='" +
+                movies[i].Poster +
+                "' alt='Movie Poster'>";
                 html +=
                   "<h2><a href='movie-details.html?id=" +
                   movies[i].imdbID +
                   "'>" +
                   movies[i].Title +
                   "</a></h2>";
-                html += "<p><strong>Year:</strong> " + movies[i].Year + "</p>";
-                html += "<p><strong>Type:</strong> " + movies[i].Type + "</p>";
-                html +=
-                  "<img src='" +
-                  movies[i].Poster +
-                  "' alt='Movie Poster' style='width:100px;height:auto;'>";
+                html += "<p> (" + movies[i].Year + ")</p>";
+                //html += "<p><strong>Type:</strong> " + movies[i].Type + "</p>";
+                
                 html += "</div>";
               }
               $("#movies").html(html);
